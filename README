@@ -1,0 +1,31 @@
+﻿BankCard test application README
+
+Installation and Running:
+--------------------------------------------------
+1. mvn install
+2. mvn spring-boot:run
+
+
+Usage:
+--------------------------------------------------
+Application allows loading a bunch of cards as well as loading one by one via web interface.
+
+Format of bank card defined in application.properties by properties 
+'card.bank.name.pattern', 'card.number.pattern', 'card.expires.pattern'.
+
+Application validates cards on both client and server sides using those settings.
+
+Other variables:
+ui.cards.load.limit - limit of cards loaded into UI per request while browsing. 
+Used for performance optimization . 
+
+server.csv.file.maxsize - maximum CSV file size. Initially set to 10000.
+
+1.Start application
+2.Open web page on localhost:8080
+3.Load bank cards by uploading 'EXAMPLE.csv' file from the root project dir. 
+  Just choose a file in the right block below card table and then press "Upload" button.
+4.Load a single bank card using UI.
+5.See application status in the left upper corner.
+
+

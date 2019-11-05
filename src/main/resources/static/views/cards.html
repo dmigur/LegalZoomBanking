@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<body>
+
+<h2 style="text-align: center; color: darkblue">LegalZoom Banking Cards</h2>
+
+<div>
+
+    <div class="cards">
+
+
+        <div id="status" class="block_status">
+
+        <div class="statusMessage" ng-show="statusMessage && !errorMessage">
+            {{statusMessage}}
+        </div>
+
+        <div class="errorMessage" ng-show="errorMessage">
+            {{errorMessage}}
+        </div>
+
+        <span style="margin-left: 200px; flow: right">
+
+                <button type="button" class="nav_left"
+                        ng-show="isNavigateLeft() || isNavigateRight()"
+                        ng-disabled="!isNavigateLeft()"
+                        id="navLeft" ng-click='onNavigateLeft()'> <<
+                </button>
+
+                <button class="nav_right" type="button"
+                        ng-show="isNavigateLeft() || isNavigateRight()"
+                        ng-disabled="!isNavigateRight()"
+                        id="navRight" ng-click='onNavigateRight()'>>>
+                </button>
+
+                <span ng-show="cards" class="cardsinfo"><b>{{startIndex+1}}-{{getFinishIndex()}}</b> cards shown of  <b>{{cards.length}}</b></span>
+
+            </span>
+
+    </div>
+
+
+    <table class="tcards" id="tcards" cellspacing="0" cellpadding="0" border="1">
+
+        <tr>
+            <colgroup>
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 35%;">
+                <col span="1" >
+            </colgroup>
+
+            <thead>
+            <tr class="header">
+
+                <th class="cell_header">
+                    Bank
+                </th>
+
+                <th class="cell_header cell_header_number">
+                    Card Number
+                </th>
+
+                <th class="cell_header cell_header_date">
+                    Expiry Date
+                </th>
+
+            </tr>
+            </thead>
+
+        </tr>
+
+
+        <tr ng-repeat="card in cards"
+            ng-show="isShowRecord($index)"
+        >
+
+            <td class="cell_default">
+                {{card.bankName}}
+            </td>
+
+            <td class="cell_default cell_number">
+                {{card.cardNumber}}
+            </td>
+
+            <td style="cell_default">
+                {{card.expires | date: 'MMM-yyyy' }}
+            </td>
+
+        </tr>
+
+    </table>
+
+
+</div>
+
+<div class="controls">
+    <div class="addcard">
+
+        <span>Please enter banking card data:</span>
+
+        <form name="addCard">
+
+            <table>
+                <tr>
+                    <td>
+                        Bank:
+                    </td>
+                    <td>
+                        <input type="text" ng-model="card.bankName" name="bankName" class="bankName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Card number:
+                    </td>
+                    <td>
+                        <input type="text" class="cardNumber" ng-model="card.cardNumber"
+                               value="0000-0000-0000-0000"
+                               name="cardNumber">
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Expiry Date:
+                    </td>
+                    <td>
+
+                        <datepicker date-format="dd-MM-yyyy">
+                            <input type="text" ng-model="card.expires"/>
+                        </datepicker>
+
+                    </td>
+                </tr>
+            </table>
+
+            <button style="float: right" ng-disabled="isAddCardDisabled()" ng-click="addCardData()">ADD CARD</button>
+
+        </form>
+
+
+    </div>
+
+
+    <div class="loadfile">
+
+        <span>Please enter CSV file with card data:</span>
+
+        <form class="fileload" method="POST" enctype="multipart/form-data" action="" name="loadFile">
+
+            <div>
+                <div style="text-align: left; margin-bottom: 10px">
+                    <span>
+
+                        <input type="file" name="file" width="400px"
+                               fileread="csvFile"
+                               style="background-color: white; color: #004152;"
+                               accept=".csv"></span>
+
+                    <button id="Upload" class="Upload"
+                            ng-disabled="isFileUploadDisabled()" ng-click="uploadFile()">Upload file
+                    </button>
+
+                </div>
+
+
+            </div>
+
+            <div style="margin-top: 15px">
+                <span style="color:red">{{fileMessage}}</span>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+
+
+<div id="loading" style="display: none">
+    <div><img src="images/spinner.gif" width="30" height="30" alt="Be patient..."/>
+    </div>
+</div>
+
+</body>
+</html>

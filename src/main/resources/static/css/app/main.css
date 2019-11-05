@@ -1,0 +1,106 @@
+.html,
+
+.main {
+}
+
+.block_status{
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.cards {
+    background-color: white;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 70%;
+    overflow: auto;;
+    min-height: 400px;
+    max-height: 600px;
+}
+
+.addcard {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 40%;
+}
+
+.loadfile {
+    margin: 20px;
+    padding: 10px;
+    width: 40%;
+    border: 1px solid #888;
+}
+
+.fileload {
+    margin-top: 25px;
+}
+
+.tcards{
+    color: black;
+    width: 100%;
+    background-color: white;
+    /*border: 1px solid black;*/
+}
+
+.tcards th, td{
+    padding: 4px 3px;
+}
+
+.tcards th
+{
+    background-color: #C0C6DD;
+}
+
+.tcards td
+{
+    color: #1A1EB2
+}
+
+.cell_default{
+}
+
+.cell_header {
+}
+
+.cell_number{
+}
+
+.cell_header_number{
+
+}
+.cell_header_date{
+    text-align: center
+}
+
+.statusMessage{
+    color: darkgreen;
+}
+
+.errorMessage{
+    color: red;
+}
+
+.cardsinfo {
+    margin-left: 50px;
+}
+
+.nav_right {
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 1px;
+}
+
+#loading {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    display: none;
+    z-index: 10;
+}
+
+
+.controls{
+    display: flex;
+}
